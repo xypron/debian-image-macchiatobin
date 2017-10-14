@@ -53,12 +53,9 @@ copy:
 	sudo rm mnt/setup.sh
 
 flash:
-	mkimage -n rk3399 -T rksd -d \
-	  mnt/usr/lib/u-boot/firefly-rk3399/u-boot-spl.bin out
-	sudo dd if=out of=image seek=64 conv=notrunc
-	rm out
-	sudo dd if=mnt/usr/lib/u-boot/firefly-rk3399/u-boot.img \
-	  of=image seek=512 conv=notrunc
+	wget https://wiki.solid-run.com/lib/exe/fetch.php?media=products:a8040:software:os:flash-image.bin.gz -O flash-image.bin.gz
+	gunzip flash-image.bin.gz
+	sudo dd if=flash-image.bin of=image seek=1 conv=notrunc,fsync
 
 unmount:
 	sync
