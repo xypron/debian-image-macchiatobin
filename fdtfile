@@ -1,0 +1,2 @@
+# Workaround for Debian bug #878570
+setenf fdtfile armada-8040-mcbin.dtb
